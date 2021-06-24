@@ -7,6 +7,16 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    # Only allow updates to the lockfile for pip and
-    # ignore any version updates that affect the manifest
-    versioning-strategy: lockfile-only
+    # Raise pull requests for version updates
+    # to pip against the `develop` branch
+    target-branch: "develop"
+    # Labels on pull requests for version updates only
+    labels:
+      - "pip dependencies"
+      
+  - package-ecosystem: "bundler"
+    # Raise pull requests to update vendored dependencies that are checked in to the repository
+    vendor: true
+    directory: "/"
+    schedule:
+      interval: "weekly"
